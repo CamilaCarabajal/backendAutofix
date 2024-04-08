@@ -16,9 +16,10 @@ public class VehicleEntity {
     @Column(unique = true, nullable = false)
     private String patente;
     private String marca;
-    private String modelo;
+    private String tipoModelo;
     private int año;
     private String motor;
     private int asientos;
     private int kilometraje;
+    private int cantidadReparaciones;
 }
