@@ -1,6 +1,8 @@
 package com.example.backendAutofix.Entities;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.example.backendAutofix.Entities.RepairEntity;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,13 +25,17 @@ public class VehicleEntity {
     private String patente;
     private String marca;
     private String tipoModelo;
-    private int año;
+    private int ano;
     private String motor;
     private int asientos;
     private int kilometraje;
     private int cantidadReparaciones;
 
-    @ElementCollection(fetch = FetchType.EAGER)
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private List<Long> reparaciones;
+    @ManyToMany
+    @JoinTable(
+            name = "vehicle_repair",
+            joinColumns = @JoinColumn(name = "patente"),
+            inverseJoinColumns = @JoinColumn(name = "idReparacion"))
+    @JsonManagedReference
+    private List<RepairEntity> reparaciones;
 }

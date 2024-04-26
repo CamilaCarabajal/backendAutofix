@@ -18,12 +18,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 @SpringBootTest
 @Transactional
-public class VehicleTest {
 
+public class RepairTest {
     @Mock
     private VehicleRepository vehicleRepository;
     @InjectMocks
@@ -36,21 +38,26 @@ public class VehicleTest {
     private RepairService repairService;
 
     @Test
-    public void registroVehiculo(){
-        VehicleEntity vehicle1 = new VehicleEntity();
-        vehicle1.setPatente("ABCD23");
-        vehicle1.setMarca("Honda");
-        vehicle1.setTipoModelo("Sedan");
-        vehicle1.setAno(2010);
-        vehicle1.setMotor("Diesel");
-        vehicle1.setAsientos(4);
-        vehicle1.setKilometraje(10000);
-        vehicle1.setCantidadReparaciones(0);
-        Mockito.when(vehicleRepository.save(Mockito.any(VehicleEntity.class))).thenReturn(vehicle1);
-        VehicleEntity resultado = vehicleService.registroVehiculo(vehicle1);
-        assertEquals(resultado.getPatente(), vehicle1.getPatente());
+    public void agregarReparacionAVehiculo(){
+        RepairEntity reparacion = new RepairEntity();
+        reparacion.setIdReparacion(1L);
+        reparacion.setTipoReparacion(10);
+        reparacion.setMontoReparacion(130000);
+
+        VehicleEntity vehiculo = new VehicleEntity();
+        vehiculo.setPatente("DHSJ23");
+        vehiculo.setMarca("Toyota");
+        vehiculo.setTipoModelo("SUV");
+        vehiculo.setAno(2014);
+        vehiculo.setMotor("Gasolina");
+        vehiculo.setAsientos(5);
+        vehiculo.setKilometraje(20000);
+        vehiculo.setCantidadReparaciones(0);
+
+        when(repairRepository.obtenerReparacionPorId(anyLong())).thenReturn(reparacion);
+        repairService.agregarReparacionAVehiculo(1L,vehiculo);
+        assertEquals(1, vehiculo.getCantidadReparaciones());
+
 
     }
-
-
 }

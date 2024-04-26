@@ -28,6 +28,12 @@ public class VehicleService {
         return vehicleRepository.findAll();
     }
 
+
+
+    public List<String> obtenerTiposReparacionesPorVehiculo(Long patente) {
+        return vehicleRepository.findTiposReparacionesByVehiculoId(patente);
+    }
+
     //Kilometraje, antiguedad
 
 

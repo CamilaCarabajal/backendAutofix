@@ -20,158 +20,167 @@ public class RepairService {
     @Autowired
     VehicleRepository vehicleRepository;
 
-    public RepairEntity createRepair(RepairEntity repair){
-        return repairRepository.save(repair);
+
+    public RepairEntity obtenerReparacionPorId(Long idReparacion) {
+        return repairRepository.obtenerReparacionPorId(idReparacion);
     }
 
-    public int costoReparaciones (RepairEntity reparacion, VehicleEntity vehiculo){
-        if(reparacion.getTipoReparacion() == 1){
-            if(vehiculo.getMotor() == "Gasolina" || vehiculo.getMotor() == "Diesel"){
-                return 120000;
+    public RepairEntity calcularCostoReparacion(VehicleEntity vehiculo, RepairEntity reparacion){
+        int costoReparacion = 0;
+        String tipoMotor = vehiculo.getMotor();
+        int tipoReparacion = reparacion.getTipoReparacion();
+
+        if(tipoMotor.equals("Gasolina")){
+            if(tipoReparacion == 1){
+                costoReparacion = 120000;
+            } else if (tipoReparacion == 2) {
+                costoReparacion =130000;
+
+            } else if (tipoReparacion == 3) {
+                costoReparacion = 350000;
+            } else if (tipoReparacion == 4) {
+                costoReparacion = 210000;
+
+            } else if (tipoReparacion == 5) {
+                costoReparacion = 150000;
+
+            } else if (tipoReparacion == 6) {
+                costoReparacion = 100000;
+
+            } else if (tipoReparacion == 7) {
+                costoReparacion = 100000;
+
+            } else if (tipoReparacion == 8) {
+                costoReparacion = 180000;
+
+            } else if (tipoReparacion == 9) {
+                costoReparacion = 150000;
+
+            } else if (tipoReparacion == 10) {
+                costoReparacion = 130000;
+
+            } else {
+                costoReparacion = 80000;
 
             }
-            else if(vehiculo.getMotor() == "Hibrido"){
-                return 180000;
-            }
-            else if(vehiculo.getMotor() == "Electrico"){
-                return 220000;
-            }
 
-        }
-        else if(reparacion.getTipoReparacion() == 2){
-            if(vehiculo.getMotor() == "Gasolina" || vehiculo.getMotor() == "Diesel"){
-                return 130000;
-            }
-            else if(vehiculo.getMotor() == "Hibrido"){
-                return 190000;
-            }
-            else if(vehiculo.getMotor() == "Electrico"){
-                return 230000;
-            }
-        }
-        else if(reparacion.getTipoReparacion() == 3){
-            if(vehiculo.getMotor() == "Gasolina"){
-                return 350000;
-            }
-            else if(vehiculo.getMotor() == "Diesel"){
-                return 450000;
-            }
-            else if(vehiculo.getMotor() == "Hibrido"){
-                return 700000;
-            }
-            else if (vehiculo.getMotor() == "Electrico"){
-                return 800000;
-            }
-        }
-        else if(reparacion.getTipoReparacion() == 4){
-            if(vehiculo.getMotor() == "Gasolina" || vehiculo.getMotor() == "Diesel"){
-                return 210000;
-            }
-            else if(vehiculo.getMotor() == "Hibrido" || vehiculo.getMotor() == "Electrico"){
-                return 300000;
-            }
+        } else if (tipoMotor.equals("Diesel")) {
+            if(tipoReparacion == 1){
+                costoReparacion = 120000;
+            } else if (tipoReparacion == 2) {
+                costoReparacion =130000;
 
-        }
-        else if(reparacion.getTipoReparacion() == 5){
-            if(vehiculo.getMotor() == "Gasolina" || vehiculo.getMotor() == "Diesel"){
-                return 150000;
-            }
-            else if(vehiculo.getMotor() == "Hibrido"){
-                return 200000;
-            }
-            else if(vehiculo.getMotor() == "Electrico"){
-                return 250000;
-            }
-        }
-        else if(reparacion.getTipoReparacion() == 6){
-            if(vehiculo.getMotor() == "Gasolina"){
-                return 100000;
-            }
-            else if(vehiculo.getMotor() == "Diesel"){
-                return 120000;
-            }
-            else if(vehiculo.getMotor() == "Hibrido"){
-                return 450000;
-            }
-            else if (vehiculo.getMotor() == "Electrico"){
-                return 0;
-            }
+            } else if (tipoReparacion == 3) {
+                costoReparacion = 450000;
+            } else if (tipoReparacion == 4) {
+                costoReparacion = 210000;
 
-        }
-        else if(reparacion.getTipoReparacion() == 7){
-            if(vehiculo.getMotor()=="Gasolina" || vehiculo.getMotor()=="Diesel" || vehiculo.getMotor()=="Hibrido" || vehiculo.getMotor()=="Electrico"){
-                return 100000;
-            }
-        }
-        else if(reparacion.getTipoReparacion() == 8){
-            if(vehiculo.getMotor() == "Gasolina" || vehiculo.getMotor() == "Diesel"){
-                return 180000;
-            }
-            else if(vehiculo.getMotor() == "Hibrido"){
-                return 210000;
-            }
-            else if(vehiculo.getMotor() == "Electrico"){
-                return 250000;
-            }
+            } else if (tipoReparacion == 5) {
+                costoReparacion = 150000;
 
-        }
-        else if(reparacion.getTipoReparacion() == 9){
-            if(vehiculo.getMotor() == "Gasolina" || vehiculo.getMotor() == "Diesel"){
-                return 150000;
-            }
-            else if(vehiculo.getMotor() == "Hibrido" || vehiculo.getMotor() == "Electrico") {
-                return 180000;
-            }
-        }
-        else if(reparacion.getTipoReparacion() == 10){
-            if(vehiculo.getMotor() == "Gasolina"){
-                return 130000;
-            }
-            else if(vehiculo.getMotor() == "Diesel"){
-                return 140000;
-            }
-            else if(vehiculo.getMotor() == "Hibrido"){
-                return 220000;
-            }
-            else if (vehiculo.getMotor() == "Electrico"){
-                return 0;
-            }
+            } else if (tipoReparacion == 6) {
+                costoReparacion = 120000;
 
-        }
-        else if(reparacion.getTipoReparacion() == 11){
-            if(vehiculo.getMotor()=="Gasolina" || vehiculo.getMotor()=="Diesel" || vehiculo.getMotor()=="Hibrido" || vehiculo.getMotor()=="Electrico"){
-                return 80000;
-            }
-        }
+            } else if (tipoReparacion == 7) {
+                costoReparacion = 100000;
 
-        return 0;
+            } else if (tipoReparacion == 8) {
+                costoReparacion = 180000;
+
+            } else if (tipoReparacion == 9) {
+                costoReparacion = 150000;
+
+            } else if (tipoReparacion == 10) {
+                costoReparacion = 140000;
+
+            } else {
+                costoReparacion = 80000;
+
+            }
+            
+        } else if (tipoMotor.equals("Hibrido")) {
+            if(tipoReparacion == 1){
+                costoReparacion = 180000;
+            } else if (tipoReparacion == 2) {
+                costoReparacion =190000;
+
+            } else if (tipoReparacion == 3) {
+                costoReparacion = 700000;
+            } else if (tipoReparacion == 4) {
+                costoReparacion = 300000;
+
+            } else if (tipoReparacion == 5) {
+                costoReparacion = 200000;
+
+            } else if (tipoReparacion == 6) {
+                costoReparacion = 450000;
+
+            } else if (tipoReparacion == 7) {
+                costoReparacion = 100000;
+
+            } else if (tipoReparacion == 8) {
+                costoReparacion = 210000;
+
+            } else if (tipoReparacion == 9) {
+                costoReparacion = 180000;
+
+            } else if (tipoReparacion == 10) {
+                costoReparacion = 220000;
+
+            } else {
+                costoReparacion = 80000;
+
+            }
+            
+        } else if (tipoMotor.equals("Electrico")) {
+            if(tipoReparacion == 1){
+                costoReparacion = 220000;
+            } else if (tipoReparacion == 2) {
+                costoReparacion =230000;
+
+            } else if (tipoReparacion == 3) {
+                costoReparacion = 800000;
+            } else if (tipoReparacion == 4) {
+                costoReparacion = 300000;
+
+            } else if (tipoReparacion == 5) {
+                costoReparacion = 250000;
+
+            } else if (tipoReparacion == 6) {
+                costoReparacion = 0;
+
+            } else if (tipoReparacion == 7) {
+                costoReparacion = 100000;
+
+            } else if (tipoReparacion == 8) {
+                costoReparacion = 250000;
+
+            } else if (tipoReparacion == 9) {
+                costoReparacion = 180000;
+
+            } else if (tipoReparacion == 10) {
+                costoReparacion = 0;
+
+            } else {
+                costoReparacion = 80000;
+
+            }
+            
+        }
+        reparacion.setMontoReparacion(costoReparacion);
+        return reparacion;
     }
-    public int recargoKilometraje (String recargo){
-        VehicleEntity vehiculo = vehicleRepository.findByPatenteQuery(recargo);
-        if(vehiculo.getKilometraje()>=0 && vehiculo.getKilometraje()<5000){
-            return 0;
-        }
-        else if ((vehiculo.getKilometraje()>=5001 && vehiculo.getKilometraje()<12000) && (vehiculo.getTipoModelo() == "Sedan" || vehiculo.getTipoModelo() == "Hatchback")) {
-            return 1000;//Corregir!!!!
 
+    public void agregarReparacionAVehiculo(Long idReparacion, VehicleEntity vehiculo) {
+        RepairEntity reparacion = obtenerReparacionPorId(idReparacion);
+        if (reparacion != null) {
+            RepairEntity costoReparacion = calcularCostoReparacion(vehiculo,reparacion);
+            vehiculo.setCantidadReparaciones(vehiculo.getCantidadReparaciones() + 1);
+            repairRepository.agregarReparacionAVehiculo(idReparacion, vehiculo);
         }
-        else if ((vehiculo.getKilometraje()>=5001 && vehiculo.getKilometraje()<12000) && (vehiculo.getTipoModelo() == "SUV" || vehiculo.getTipoModelo() == "Pickup" || vehiculo.getTipoModelo() == "Furgoneta")){
-            return 1000;   //Corregir!!!!
-        }
-        else if ((vehiculo.getKilometraje()>=12001 && vehiculo.getKilometraje()<25000) && (vehiculo.getTipoModelo() == "Sedan" || vehiculo.getTipoModelo() == "Hatchback")){
-            return 2000; //Corregir!!
-        }
-        else if ((vehiculo.getKilometraje()>=12001 && vehiculo.getKilometraje()<25000) && (vehiculo.getTipoModelo() == "SUV" || vehiculo.getTipoModelo() == "Pickup" || vehiculo.getTipoModelo() == "Furgoneta")){
-            return 2000;   //Corregir!!!!
-        }
-        else if(vehiculo.getKilometraje()>=25001 && vehiculo.getKilometraje()<40000){
-            return 3000;//Corregir!!!!
-        }
-        else if(vehiculo.getKilometraje()>=40001){
-            return 4000;//Corregir!!!!
-        }
-
-        return 0;
     }
+
+
+
 
 }

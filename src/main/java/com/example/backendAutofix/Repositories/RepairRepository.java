@@ -8,6 +8,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface RepairRepository extends JpaRepository<RepairEntity, Long> {
-    @Query(value = "SELECT * FROM vehicles WHERE vehicles.patente = :patente", nativeQuery = true)
-    VehicleEntity findByPatente(@Param("patente") String patente);
+    @Query("SELECT r FROM RepairEntity r WHERE r.idReparacion = :idReparacion")
+    RepairEntity obtenerReparacionPorId(@Param("id") Long idReparacion);
+
+    @Query("UPDATE RepairEntity r SET r.vehiculos = :vehiculo WHERE r.idReparacion = :idReparacion")
+    void agregarReparacionAVehiculo(@Param("idReparacion") Long idReparacion, @Param("vehiculo") VehicleEntity vehiculo);
 }

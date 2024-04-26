@@ -15,6 +15,12 @@ public interface VehicleRepository extends JpaRepository<VehicleEntity, Long> {
 
 
 
+    @Query("SELECT DISTINCT r.tipoReparacion FROM VehicleEntity v JOIN v.reparaciones r WHERE v.patente = :patente")
+    List<String> findTiposReparacionesByVehiculoId(Long patente);
+
+
+
+
 
 
 
