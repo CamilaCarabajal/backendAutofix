@@ -1,8 +1,10 @@
 package com.example.backendAutofix.Entities;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.example.backendAutofix.Entities.RepairEntity;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,6 +20,7 @@ import static jakarta.persistence.FetchType.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "patente")
 public class VehicleEntity {
 
     @Id
@@ -36,6 +39,6 @@ public class VehicleEntity {
             name = "vehicle_repair",
             joinColumns = @JoinColumn(name = "patente"),
             inverseJoinColumns = @JoinColumn(name = "idReparacion"))
-    @JsonManagedReference
-    private List<RepairEntity> reparaciones;
+    @JsonIgnore
+    List<RepairEntity> reparaciones;
 }

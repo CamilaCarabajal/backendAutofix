@@ -25,6 +25,25 @@ public class RepairService {
         return repairRepository.obtenerReparacionPorId(idReparacion);
     }
 
+    public List<RepairEntity> listaReparaciones(){
+        return repairRepository.findAll();
+    }
+
+
+    public RepairEntity actualizarReparacion(Long idReparacion, RepairEntity reparacion){
+        RepairEntity reparacionExistente = repairRepository.obtenerReparacionPorId(idReparacion);
+        if(reparacionExistente != null){
+            reparacion.setIdReparacion(idReparacion);
+            return repairRepository.save(reparacion);
+
+        }
+        return null;
+    }
+
+    public void eliminarReparacion(Long idReparacion){
+        repairRepository.deleteById(idReparacion);
+    }
+
     public RepairEntity calcularCostoReparacion(VehicleEntity vehiculo, RepairEntity reparacion){
         int costoReparacion = 0;
         String tipoMotor = vehiculo.getMotor();
@@ -171,14 +190,28 @@ public class RepairService {
         return reparacion;
     }
 
-    public void agregarReparacionAVehiculo(Long idReparacion, VehicleEntity vehiculo) {
+    public RepairEntity crearReparacion(String patente, RepairEntity reparacion){
+
+        VehicleEntity vehiculo = vehicleRepository.findByPatenteQuery(patente);
+        if(vehiculo != null){
+            RepairEntity costoReparacion = calcularCostoReparacion(vehiculo,reparacion);
+            reparacion.getVehiculos().add(vehiculo);
+            vehiculo.getReparaciones().add(reparacion);
+            vehiculo.setCantidadReparaciones(vehiculo.getCantidadReparaciones()+1);
+            return repairRepository.save(reparacion);
+        }
+        return null;
+    }
+
+
+   /* public void agregarReparacionAVehiculo(Long idReparacion, VehicleEntity vehiculo) {
         RepairEntity reparacion = obtenerReparacionPorId(idReparacion);
         if (reparacion != null) {
             RepairEntity costoReparacion = calcularCostoReparacion(vehiculo,reparacion);
             vehiculo.setCantidadReparaciones(vehiculo.getCantidadReparaciones() + 1);
             repairRepository.agregarReparacionAVehiculo(idReparacion, vehiculo);
         }
-    }
+    }*/
 
 
 

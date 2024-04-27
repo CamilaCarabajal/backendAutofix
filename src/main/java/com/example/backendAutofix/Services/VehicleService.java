@@ -28,6 +28,27 @@ public class VehicleService {
         return vehicleRepository.findAll();
     }
 
+    public VehicleEntity obtenerVehiculoPatente(String patente){
+        return vehicleRepository.findByPatenteQuery(patente);
+    }
+
+    public VehicleEntity modificarVehiculo(String patente, VehicleEntity vehiculo){
+        VehicleEntity vehiculoExistente = vehicleRepository.findByPatenteQuery(patente);
+        if(vehiculoExistente != null){
+            vehiculo.setPatente(patente);
+            return vehicleRepository.save(vehiculo);
+        }
+        return null;
+    }
+
+    public boolean eliminarVehiculo(String patente){
+        if(vehicleRepository.existsByPatenteQuery(patente)){
+            vehicleRepository.deleteByPatenteQuery(patente);
+            return true;
+        }
+        return false;
+    }
+
 
 
     public List<String> obtenerTiposReparacionesPorVehiculo(Long patente) {
