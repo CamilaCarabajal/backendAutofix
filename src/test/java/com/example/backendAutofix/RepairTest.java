@@ -37,7 +37,7 @@ public class RepairTest {
     @InjectMocks
     private RepairService repairService;
 
-    @Test
+    /*@Test
     public void agregarReparacionAVehiculo(){
         RepairEntity reparacion = new RepairEntity();
         reparacion.setIdReparacion(1L);
@@ -59,5 +59,5 @@ public class RepairTest {
         assertEquals(1, vehiculo.getCantidadReparaciones());
 
 
-    }
+    }*/
 }

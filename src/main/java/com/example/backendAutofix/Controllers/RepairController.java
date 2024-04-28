@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import com.example.backendAutofix.Entities.VehicleEntity;
 import com.example.backendAutofix.Entities.RepairEntity;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/api")
 
@@ -21,15 +23,49 @@ public class RepairController {
     @Autowired
     VehicleService vehicleService;
 
-   /*("/agregarReparacionAVehiculo")
-   @PostMapping("/{idReparacion}/vehiculos/{patenteVehiculo}")
-   public ResponseEntity<String> agregarReparacionAVehiculo(@PathVariable Long idReparacion, @PathVariable String patente) {
-       VehicleEntity vehiculo = vehicleService.obtenerVehiculoPatente(patente);
-       if (vehiculo == null) {
-           return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Vehículo no encontrado");
-       }
 
-       repairService.agregarReparacionAVehiculo(idReparacion, vehiculo);
-       return ResponseEntity.ok("Reparación agregada al vehículo con éxito.");
-   }*/
+
+    @GetMapping("/reparaciones")
+    public List<RepairEntity> listaReparaciones(){
+        return repairService.listaReparaciones();
+    }
+
+    @GetMapping("reparaciones/{idReparacion}")
+    public ResponseEntity<RepairEntity> obtenerReparacionPorId(@PathVariable Long idReparacion) {
+        RepairEntity reparacion = repairService.obtenerReparacionPorId(idReparacion);
+        if (reparacion == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(reparacion);
+    }
+
+
+
+    @PostMapping("reparaciones/crear?patente={patente}")
+    public ResponseEntity<RepairEntity> crearReparacion(@RequestParam String patente, @RequestBody RepairEntity reparacion) {
+        RepairEntity nuevaReparacion = repairService.crearReparacion(patente, reparacion);
+        if (nuevaReparacion != null) {
+            return new ResponseEntity<>(nuevaReparacion, HttpStatus.CREATED);
+        } else {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @PutMapping("reparaciones/actualizar/{idReparacion}")
+    public ResponseEntity<RepairEntity> actualizarReparacion(@PathVariable Long idReparacion, @RequestBody RepairEntity reparacion) {
+        RepairEntity reparacionActualizada = repairService.actualizarReparacion(idReparacion, reparacion);
+        if (reparacionActualizada != null) {
+            return ResponseEntity.ok(reparacionActualizada);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @DeleteMapping("reparaciones/eliminar/{id}")
+    public ResponseEntity<Void> eliminarReparacion(@PathVariable Long idReparacion) {
+        repairService.eliminarReparacion(idReparacion);
+        return ResponseEntity.noContent().build();
+    }
+
+
 }

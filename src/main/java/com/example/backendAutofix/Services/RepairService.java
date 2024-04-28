@@ -44,7 +44,7 @@ public class RepairService {
         repairRepository.deleteById(idReparacion);
     }
 
-    public RepairEntity calcularCostoReparacion(VehicleEntity vehiculo, RepairEntity reparacion){
+    public int calcularCostoReparacion(VehicleEntity vehiculo, RepairEntity reparacion){
         int costoReparacion = 0;
         String tipoMotor = vehiculo.getMotor();
         int tipoReparacion = reparacion.getTipoReparacion();
@@ -186,17 +186,17 @@ public class RepairService {
             }
             
         }
-        reparacion.setMontoReparacion(costoReparacion);
-        return reparacion;
+        return costoReparacion;
     }
 
     public RepairEntity crearReparacion(String patente, RepairEntity reparacion){
 
         VehicleEntity vehiculo = vehicleRepository.findByPatenteQuery(patente);
         if(vehiculo != null){
-            RepairEntity costoReparacion = calcularCostoReparacion(vehiculo,reparacion);
+            int costoReparacion = calcularCostoReparacion(vehiculo,reparacion);
             reparacion.getVehiculos().add(vehiculo);
             vehiculo.getReparaciones().add(reparacion);
+            reparacion.setMontoReparacion(costoReparacion);
             vehiculo.setCantidadReparaciones(vehiculo.getCantidadReparaciones()+1);
             return repairRepository.save(reparacion);
         }
@@ -204,14 +204,10 @@ public class RepairService {
     }
 
 
-   /* public void agregarReparacionAVehiculo(Long idReparacion, VehicleEntity vehiculo) {
-        RepairEntity reparacion = obtenerReparacionPorId(idReparacion);
-        if (reparacion != null) {
-            RepairEntity costoReparacion = calcularCostoReparacion(vehiculo,reparacion);
-            vehiculo.setCantidadReparaciones(vehiculo.getCantidadReparaciones() + 1);
-            repairRepository.agregarReparacionAVehiculo(idReparacion, vehiculo);
-        }
-    }*/
+
+  
+
+
 
 
 

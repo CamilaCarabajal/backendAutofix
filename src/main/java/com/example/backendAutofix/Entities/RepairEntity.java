@@ -11,6 +11,7 @@ import jakarta.persistence.*;
 
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -26,7 +27,7 @@ public class RepairEntity {
 
     @ManyToMany(mappedBy = "reparaciones")
     @JsonIgnore
-    List<VehicleEntity> vehiculos;
+    List<VehicleEntity> vehiculos = new ArrayList<>();
     private int tipoReparacion;
     private int montoReparacion;
 
