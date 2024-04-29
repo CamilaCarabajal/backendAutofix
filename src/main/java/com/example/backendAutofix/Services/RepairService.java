@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +27,10 @@ public class RepairService {
 
     public RepairEntity obtenerReparacionPorId(Long idReparacion) {
         return repairRepository.obtenerReparacionPorId(idReparacion);
+    }
+
+    public RepairEntity findRepairByPatente(String patente) {
+        return repairRepository.findRepairByPatente(patente);
     }
 
     public List<RepairEntity> listaReparaciones(){
@@ -288,10 +293,14 @@ public class RepairService {
 
     }
 
-    public double descuentoPorDia(RepairEntity reparacion){
+    public double calcularDescuentoPorDia(String patente){
+
+        List<RepairEntity> listaReparaciones = listaReparacionesPorPatente(patente);
+
+
         double descuentoDia = 0.0;
-        LocalDate diaIngreso = reparacion.getFechaIngreso();
-        LocalTime horaIngreso = reparacion.getHoraIngreso();
+        LocalDate diaIngreso = listaReparaciones.get(0).getFechaIngreso();
+        LocalTime horaIngreso = listaReparaciones.get(0).getHoraIngreso();
         if ((diaIngreso.getDayOfWeek() == DayOfWeek.MONDAY) || (diaIngreso.getDayOfWeek() == DayOfWeek.THURSDAY)) {
             if (horaIngreso.isAfter(LocalTime.of(9, 0)) && horaIngreso.isBefore(LocalTime.of(12, 0))) {
                 descuentoDia = 0.1;
@@ -301,7 +310,29 @@ public class RepairService {
 
     }
 
-    //public double descuentoBono();
+    public double calcularDescuentoBono(VehicleEntity vehiculo){
+        double descuentoBono = 0.0;
+        String marcaVehiculo = vehiculo.getMarca();
+        List<Integer> precioBono = List.of(70000,50000,30000,40000);
+        List<Integer> cantBonos = new ArrayList<>(List.of(5,2,1,7));
+
+        if(cantBonos.get(0)>=1 && marcaVehiculo == "Toyota"){
+            descuentoBono = precioBono.get(0);
+            cantBonos.set(0,cantBonos.get(0)-1);
+        } else if (cantBonos.get(1)>=1 && marcaVehiculo == "Ford"){
+            descuentoBono = precioBono.get(1);
+            cantBonos.set(1,cantBonos.get(1)-1);
+        }else if (cantBonos.get(2)>=1 && marcaVehiculo == "Hyundai"){
+            descuentoBono = precioBono.get(2);
+            cantBonos.set(2,cantBonos.get(2)-1);
+        }else if (cantBonos.get(3)>=1 && marcaVehiculo == "Honda"){
+            descuentoBono = precioBono.get(3);
+            cantBonos.set(3,cantBonos.get(3)-1);
+        }else {
+            descuentoBono = 0.0;
+        }
+        return descuentoBono;
+    }
 
 
 
@@ -309,7 +340,108 @@ public class RepairService {
     /*-------------------------------------------------------------------------------------------*/
     /*RECARGOS */
 
-    public double recargoKilometraje
+    public double calcularRecargoKilometraje(VehicleEntity vehiculo){
+        double recargoKilometraje = 0.0;
+        int kilometraje = vehiculo.getKilometraje();
+        String modelo = vehiculo.getTipoModelo();
+
+        if (kilometraje>=0 && kilometraje <=5000){
+            recargoKilometraje = 0.0;
+        } else if (kilometraje>=5001 && kilometraje<=12000) {
+            if(modelo == "Sedan" || modelo == "Hatchback"){
+                recargoKilometraje = 0.03;
+            } else if (modelo == "SUV" || modelo == "Pickup" || modelo == "Furgoneta") {
+                recargoKilometraje = 0.05;
+            }
+        } else if (kilometraje>=12001 && kilometraje<=25000) {
+            if(modelo == "Sedan" || modelo == "Hatchback"){
+                recargoKilometraje = 0.07;
+            } else if (modelo == "SUV" || modelo == "Pickup" || modelo == "Furgoneta") {
+                recargoKilometraje = 0.09;
+            }
+
+        } else if (kilometraje>=25001 && kilometraje<=40000) {
+            recargoKilometraje = 0.12;
+
+        } else if (kilometraje>=40001) {
+            recargoKilometraje = 0.2;
+        }
+        return recargoKilometraje;
+    }
+
+    public double calculoRecargoAntiguedad(VehicleEntity vehiculo){
+        double recargoAntiguedad = 0.0;
+        int anoActual = 2024;
+        int anoFabricacion = vehiculo.getAno();
+        int antiguedad = anoActual - anoFabricacion;
+        String modelo = vehiculo.getTipoModelo();
+
+        if(antiguedad >=0 && antiguedad<=5){
+            recargoAntiguedad = 0.0;
+        } else if (antiguedad>=6 && antiguedad<=10) {
+            if(modelo == "Sedan" || modelo == "Hatchback"){
+                recargoAntiguedad = 0.05;
+            } else if (modelo == "SUV" || modelo == "Pickup" || modelo == "Furgoneta") {
+                recargoAntiguedad = 0.07;
+            }
+        } else if (antiguedad>=11 && antiguedad<=15) {
+            if(modelo == "Sedan" || modelo == "Hatchback"){
+                recargoAntiguedad = 0.09;
+            } else if (modelo == "SUV" || modelo == "Pickup" || modelo == "Furgoneta") {
+                recargoAntiguedad = 0.11;
+            }
+        } else if (antiguedad>=16) {
+            if(modelo == "Sedan" || modelo == "Hatchback"){
+                recargoAntiguedad = 0.15;
+            } else if (modelo == "SUV" || modelo == "Pickup" || modelo == "Furgoneta") {
+                recargoAntiguedad = 0.2;
+            }
+        }
+        return recargoAntiguedad;
+    }
+
+    public double calculoRecargoDia(String patente){
+        List<RepairEntity> listaReparaciones = listaReparacionesPorPatente(patente);
+        double recargoDia = 0.0;
+
+        //Se requiere buscar la ultima posicion de las reparaciones
+        LocalDate salidaReparacion = listaReparaciones.get(listaReparaciones.size()-1).getFechaSalidaReparacion();
+        LocalDate salidaCliente = listaReparaciones.get(listaReparaciones.size()-1).getFechaSalidaVehiculo();
+
+        long cantDias = ChronoUnit.DAYS.between(salidaReparacion,salidaCliente);
+
+        if(salidaReparacion == salidaCliente){
+            recargoDia = 0.0;
+        }else{
+            recargoDia = cantDias*0.05;
+        }
+        return recargoDia;
+    }
+
+
+
+    public double obtenerCostoTotalVehiculo(String patente){
+
+        VehicleEntity vehiculo = vehicleRepository.findByPatenteQuery(patente);
+        double sumaReparaciones = calcularCostoTotalReparaciones(patente);
+
+        //Descuentos
+        double descuentoReparacion = calcularDescuentoReparacion(vehiculo);
+        double descuentoBono = calcularDescuentoBono(vehiculo);
+        double descuentoDia = calcularDescuentoPorDia(patente);
+        //Recargos
+        double recargoKilometraje = calcularRecargoKilometraje(vehiculo);
+        double recargoAntiguedad = calculoRecargoAntiguedad(vehiculo);
+        double recargoDia = calculoRecargoDia(patente);
+
+        double iva = sumaReparaciones*0.19;
+
+        double CostoTotalVehiculo=((sumaReparaciones -(sumaReparaciones*descuentoReparacion+sumaReparaciones*descuentoBono+sumaReparaciones*descuentoDia)
+                +(sumaReparaciones*recargoAntiguedad + sumaReparaciones*recargoKilometraje + sumaReparaciones*recargoDia))+iva);
+
+        return CostoTotalVehiculo;
+
+    }
 
 
 

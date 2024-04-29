@@ -13,5 +13,8 @@ public interface RepairRepository extends JpaRepository<RepairEntity, Long> {
     @Query("SELECT r FROM RepairEntity r WHERE r.idReparacion = :idReparacion")
     RepairEntity obtenerReparacionPorId(@Param("id") Long idReparacion);
 
+    @Query("SELECT r FROM RepairEntity r JOIN r.vehiculos v WHERE v.patente = :patente")
+    RepairEntity findRepairByPatente(@Param("patente") String patente);
+
 
 }
