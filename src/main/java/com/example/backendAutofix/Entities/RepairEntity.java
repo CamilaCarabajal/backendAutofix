@@ -11,6 +11,7 @@ import jakarta.persistence.*;
 
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,10 +26,20 @@ public class RepairEntity {
     @Column(unique = true, nullable = false)
     private Long idReparacion;
 
+    private LocalDate fechaIngreso;
+    private LocalTime horaIngreso;
+
+
     @ManyToMany(mappedBy = "reparaciones")
     @JsonIgnore
     List<VehicleEntity> vehiculos = new ArrayList<>();
     private int tipoReparacion;
     private int montoReparacion;
+
+    private LocalDate fechaSalidaReparacion;
+    private LocalTime horaSalidaReparacion;
+
+    private LocalDate fechaSalidaVehiculo;
+    private LocalDate horaSalidaVehiculo;
 
 }

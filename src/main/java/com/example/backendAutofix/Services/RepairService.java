@@ -9,6 +9,9 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -203,9 +206,112 @@ public class RepairService {
         return null;
     }
 
+    public List<RepairEntity> listaReparacionesPorPatente(String patente) {
+        List<RepairEntity> reparacionesPorVehiculo = new ArrayList<>();
+
+        List<RepairEntity> todasLasReparaciones = listaReparaciones();
+
+        for (RepairEntity reparacion : todasLasReparaciones) {
+            for (VehicleEntity vehiculo : reparacion.getVehiculos()) {
+                if (vehiculo.getPatente().equals(patente)) {
+                    reparacionesPorVehiculo.add(reparacion);
+                }
+            }
+        }
+
+        return reparacionesPorVehiculo;
+    }
+
+    public double calcularCostoTotalReparaciones(String patente) {
+        double costoTotal = 0.0;
+
+        List<RepairEntity> reparacionesPorVehiculo = listaReparacionesPorPatente(patente);
+
+        for (RepairEntity reparacion : reparacionesPorVehiculo) {
+            costoTotal += reparacion.getMontoReparacion();
+        }
+
+        return costoTotal;
+    }
+/*-------------------------------------------------------------------------------------------*/
+    /*DESCUENTOS*/
+    public double calcularDescuentoReparacion(VehicleEntity vehiculo){
+        double descuentoReparacion = 0.0;
+        int cantReparaciones = vehiculo.getCantidadReparaciones();
+        String tipoMotor = vehiculo.getMotor();
+
+        if(tipoMotor == "Gasolina") {
+            if(cantReparaciones>=1 && cantReparaciones<=2){
+                descuentoReparacion = 0.05;
+            } else if (cantReparaciones>=3 && cantReparaciones<=5) {
+                descuentoReparacion = 0.1;
+            } else if (cantReparaciones>=6 && cantReparaciones<=9) {
+                descuentoReparacion = 0.15;
+            } else if (cantReparaciones>=10) {
+                descuentoReparacion = 0.2;
+            }
+        } else if (tipoMotor == "Diesel") {
+            if(cantReparaciones>=1 && cantReparaciones<=2){
+                descuentoReparacion = 0.07;
+            } else if (cantReparaciones>=3 && cantReparaciones<=5) {
+                descuentoReparacion = 0.12;
+            } else if (cantReparaciones>=6 && cantReparaciones<=9) {
+                descuentoReparacion = 0.17;
+            } else if (cantReparaciones>=10) {
+                descuentoReparacion = 0.22;
+            }
+
+        } else if (tipoMotor == "Hibrido") {
+            if(cantReparaciones>=1 && cantReparaciones<=2){
+                descuentoReparacion = 0.1;
+            } else if (cantReparaciones>=3 && cantReparaciones<=5) {
+                descuentoReparacion = 0.15;
+            } else if (cantReparaciones>=6 && cantReparaciones<=9) {
+                descuentoReparacion = 0.2;
+            } else if (cantReparaciones>=10) {
+                descuentoReparacion = 0.25;
+            }
+
+        } else if(tipoMotor == "Electrico"){
+            if(cantReparaciones>=1 && cantReparaciones<=2){
+                descuentoReparacion = 0.08;
+            } else if (cantReparaciones>=3 && cantReparaciones<=5) {
+                descuentoReparacion = 0.13;
+            } else if (cantReparaciones>=6 && cantReparaciones<=9) {
+                descuentoReparacion = 0.18;
+            } else if (cantReparaciones>=10) {
+                descuentoReparacion = 0.23;
+            }
+        }
+        return descuentoReparacion;
 
 
-  
+    }
+
+    public double descuentoPorDia(RepairEntity reparacion){
+        double descuentoDia = 0.0;
+        LocalDate diaIngreso = reparacion.getFechaIngreso();
+        LocalTime horaIngreso = reparacion.getHoraIngreso();
+        if ((diaIngreso.getDayOfWeek() == DayOfWeek.MONDAY) || (diaIngreso.getDayOfWeek() == DayOfWeek.THURSDAY)) {
+            if (horaIngreso.isAfter(LocalTime.of(9, 0)) && horaIngreso.isBefore(LocalTime.of(12, 0))) {
+                descuentoDia = 0.1;
+            }
+        }
+        return descuentoDia;
+
+    }
+
+    //public double descuentoBono();
+
+
+
+
+    /*-------------------------------------------------------------------------------------------*/
+    /*RECARGOS */
+
+    public double recargoKilometraje
+
+
 
 
 
