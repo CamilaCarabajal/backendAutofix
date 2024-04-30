@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static jakarta.persistence.FetchType.*;
@@ -41,4 +42,10 @@ public class VehicleEntity {
             inverseJoinColumns = @JoinColumn(name = "idReparacion"))
     @JsonIgnore
     List<RepairEntity> reparaciones;
+
+    @OneToMany(mappedBy = "vehicle", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<ReportEntity> reports = new ArrayList<>();
+
+
 }

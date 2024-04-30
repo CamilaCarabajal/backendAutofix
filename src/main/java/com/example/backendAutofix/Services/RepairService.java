@@ -124,7 +124,7 @@ public class RepairService {
                 costoReparacion = 80000;
 
             }
-            
+
         } else if (tipoMotor.equals("Hibrido")) {
             if(tipoReparacion == 1){
                 costoReparacion = 180000;
@@ -158,7 +158,7 @@ public class RepairService {
                 costoReparacion = 80000;
 
             }
-            
+
         } else if (tipoMotor.equals("Electrico")) {
             if(tipoReparacion == 1){
                 costoReparacion = 220000;
@@ -192,7 +192,7 @@ public class RepairService {
                 costoReparacion = 80000;
 
             }
-            
+
         }
         return costoReparacion;
     }
@@ -417,8 +417,37 @@ public class RepairService {
         }
         return recargoDia;
     }
+    public double calculoDescuentoTotal(String patente){
+        VehicleEntity vehiculo = vehicleRepository.findByPatenteQuery(patente);
+        double sumaReparaciones = calcularCostoTotalReparaciones(patente);
 
+        double descuentoReparacion = calcularDescuentoReparacion(vehiculo);
+        double descuentoBono = calcularDescuentoBono(vehiculo);
+        double descuentoDia = calcularDescuentoPorDia(patente);
 
+        double descuentoTotal = (sumaReparaciones*descuentoBono + sumaReparaciones+descuentoReparacion + sumaReparaciones*descuentoDia);
+        return descuentoTotal;
+    }
+
+    public double calculoRecargoTotal(String patente){
+        VehicleEntity vehiculo = vehicleRepository.findByPatenteQuery(patente);
+        double sumaReparaciones = calcularCostoTotalReparaciones(patente);
+
+        double recargoKilometraje = calcularRecargoKilometraje(vehiculo);
+        double recargoAntiguedad = calculoRecargoAntiguedad(vehiculo);
+        double recargoDia = calculoRecargoDia(patente);
+
+        double recargoTotal = (sumaReparaciones*recargoKilometraje + sumaReparaciones*recargoAntiguedad + sumaReparaciones*recargoDia );
+        return  recargoTotal;
+    }
+
+    public double ivaCostoTotal(String patente){
+        VehicleEntity vehiculo = vehicleRepository.findByPatenteQuery(patente);
+        double sumaReparaciones = calcularCostoTotalReparaciones(patente);
+
+        double iva = sumaReparaciones*0.19;
+        return iva;
+    }
 
     public double obtenerCostoTotalVehiculo(String patente){
 
@@ -426,18 +455,14 @@ public class RepairService {
         double sumaReparaciones = calcularCostoTotalReparaciones(patente);
 
         //Descuentos
-        double descuentoReparacion = calcularDescuentoReparacion(vehiculo);
-        double descuentoBono = calcularDescuentoBono(vehiculo);
-        double descuentoDia = calcularDescuentoPorDia(patente);
+        double descuentoTotal = calculoDescuentoTotal(patente);
         //Recargos
-        double recargoKilometraje = calcularRecargoKilometraje(vehiculo);
-        double recargoAntiguedad = calculoRecargoAntiguedad(vehiculo);
-        double recargoDia = calculoRecargoDia(patente);
+        double recargoTotal = calculoRecargoTotal(patente);
 
-        double iva = sumaReparaciones*0.19;
+        double iva = ivaCostoTotal(patente);
 
-        double CostoTotalVehiculo=((sumaReparaciones -(sumaReparaciones*descuentoReparacion+sumaReparaciones*descuentoBono+sumaReparaciones*descuentoDia)
-                +(sumaReparaciones*recargoAntiguedad + sumaReparaciones*recargoKilometraje + sumaReparaciones*recargoDia))+iva);
+
+        double CostoTotalVehiculo= (sumaReparaciones - descuentoTotal + recargoTotal) + iva;
 
         return CostoTotalVehiculo;
 
