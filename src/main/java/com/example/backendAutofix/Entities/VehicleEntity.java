@@ -43,7 +43,7 @@ public class VehicleEntity {
     @JsonIgnore
     List<RepairEntity> reparaciones;
 
-    @OneToMany(mappedBy = "vehicle", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "vehiculo", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<ReportEntity> reports = new ArrayList<>();
 

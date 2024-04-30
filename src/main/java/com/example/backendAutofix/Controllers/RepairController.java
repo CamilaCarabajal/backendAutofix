@@ -10,10 +10,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import com.example.backendAutofix.Entities.VehicleEntity;
 import com.example.backendAutofix.Entities.RepairEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+
 
 import java.util.List;
 
-@Controller
+@RestController
+@CrossOrigin("*")
 @RequestMapping("/api")
 
 public class RepairController {

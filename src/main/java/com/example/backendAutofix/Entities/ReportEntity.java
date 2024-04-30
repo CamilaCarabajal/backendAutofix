@@ -28,7 +28,7 @@ public class ReportEntity {
     @ManyToOne
     @JoinColumn(name = "patente", referencedColumnName = "patente")
     @JsonIgnore
-    private VehicleEntity vehicle;
+    private VehicleEntity vehiculo;
 
 
 
