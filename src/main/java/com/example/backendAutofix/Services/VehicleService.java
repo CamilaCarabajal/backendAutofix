@@ -51,9 +51,9 @@ public class VehicleService {
 
 
 
-    public List<String> obtenerTiposReparacionesPorVehiculo(String patente) {
+   /* public List<String> obtenerTiposReparacionesPorVehiculo(String patente) {
         return vehicleRepository.findTiposReparacionesByVehiculoId(patente);
-    }
+    }*/
 
 
 

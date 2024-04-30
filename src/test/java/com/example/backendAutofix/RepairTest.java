@@ -37,27 +37,5 @@ public class RepairTest {
     @InjectMocks
     private RepairService repairService;
 
-    /*@Test
-    public void agregarReparacionAVehiculo(){
-        RepairEntity reparacion = new RepairEntity();
-        reparacion.setIdReparacion(1L);
-        reparacion.setTipoReparacion(10);
-        reparacion.setMontoReparacion(130000);
 
-        VehicleEntity vehiculo = new VehicleEntity();
-        vehiculo.setPatente("DHSJ23");
-        vehiculo.setMarca("Toyota");
-        vehiculo.setTipoModelo("SUV");
-        vehiculo.setAno(2014);
-        vehiculo.setMotor("Gasolina");
-        vehiculo.setAsientos(5);
-        vehiculo.setKilometraje(20000);
-        vehiculo.setCantidadReparaciones(0);
-
-        when(repairRepository.obtenerReparacionPorId(anyLong())).thenReturn(reparacion);
-        repairService.agregarReparacionAVehiculo(1L,vehiculo);
-        assertEquals(1, vehiculo.getCantidadReparaciones());
-
-
-    }*/
 }

@@ -16,8 +16,8 @@ public interface VehicleRepository extends JpaRepository<VehicleEntity, String> 
 
 
 
-    @Query("SELECT DISTINCT r.tipoReparacion FROM VehicleEntity v JOIN v.reparaciones r WHERE v.patente = :patente")
-    List<String> findTiposReparacionesByVehiculoId(String patente);
+    /*@Query("SELECT DISTINCT r.tipoReparacion FROM VehicleEntity v JOIN v.reparaciones r WHERE v.patente = :patente")
+    List<String> findTiposReparacionesByVehiculoId(String patente);*/
 
     @Query("SELECT CASE WHEN COUNT(v) > 0 THEN true ELSE false END FROM VehicleEntity v WHERE v.patente = :patente")
     boolean existsByPatenteQuery(@Param("patente") String patente);
