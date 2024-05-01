@@ -47,8 +47,8 @@ public class RepairController {
 
 
 
-    @PostMapping("reparaciones/crear?patente={patente}")
-    public ResponseEntity<RepairEntity> crearReparacion(@RequestParam String patente, @RequestBody RepairEntity reparacion) {
+    @PostMapping("reparaciones/crear")
+    public ResponseEntity<RepairEntity> crearReparacion(@RequestBody RepairEntity reparacion) {
         RepairEntity nuevaReparacion = repairService.crearReparacion(reparacion);
         if (nuevaReparacion != null) {
             return new ResponseEntity<>(nuevaReparacion, HttpStatus.CREATED);
@@ -71,6 +71,28 @@ public class RepairController {
     public ResponseEntity<Void> eliminarReparacion(@PathVariable Long idReparacion) {
         repairService.eliminarReparacion(idReparacion);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/reparacionesPorPatente/{patente}")
+    public ResponseEntity<List<RepairEntity>> obtenerReparacionesPorPatente(@PathVariable String patente) {
+        List<RepairEntity> reparacionesPorPatente = repairService.listaReparacionesPorPatente(patente);
+
+        if (reparacionesPorPatente.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(reparacionesPorPatente, HttpStatus.OK);
+        }
+    }
+
+    @GetMapping("reparaciones/costoTotal/{patente}")
+    public ResponseEntity<Double> obtenerCostoTotalVehiculo(@PathVariable String patente) {
+        double costoTotalVehiculo = repairService.obtenerCostoTotalVehiculo(patente);
+
+        if (costoTotalVehiculo < 0) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>(costoTotalVehiculo, HttpStatus.OK);
+        }
     }
 
 

@@ -44,9 +44,9 @@ public class VehicleTest {
     public void FindByPatenteQuery() {
         VehicleEntity vehicle = new VehicleEntity("ABCD123", "Toyota", "Sedan", 2020, "Gasolina", 5, 50000, 2,null,null);
 
-        when(vehicleRepository.findByPatenteQuery("ABCD123")).thenReturn(vehicle);
+        when(vehicleService.obtenerVehiculoPatente("ABCD123")).thenReturn(vehicle);
 
-        VehicleEntity result = vehicleRepository.findByPatenteQuery("ABCD123");
+        VehicleEntity result = vehicleService.obtenerVehiculoPatente("ABCD123");
 
         // Verificaciones
         assertEquals("ABCD123", result.getPatente());
@@ -96,10 +96,10 @@ public class VehicleTest {
         vehicles.add(new VehicleEntity("DEFD456", "Honda", "SUV", 2018, "Diesel", 7, 70000, 1,null,null));
 
 
-        when(vehicleRepository.findAll()).thenReturn(vehicles);
+        when(vehicleService.listaVehiculos()).thenReturn(vehicles);
 
         // Llama al método para obtener la lista de vehículos
-        List<VehicleEntity> resultList = vehicleRepository.findAll();
+        List<VehicleEntity> resultList = vehicleService.listaVehiculos();
 
         // Verificación de la lista de vehículos
         assertEquals(2, resultList.size()); // Verifica que se devuelvan 2 vehículos en la lista

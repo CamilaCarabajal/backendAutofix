@@ -183,6 +183,28 @@ public class RepairTest {
     }
 
     @Test
+    public void testFindRepairByPatente() {
+        String patente = "ABC123";
+
+        RepairEntity reparacion = new RepairEntity();
+        reparacion.setIdReparacion(1L);
+        reparacion.setFechaIngreso(LocalDate.now());
+        reparacion.setHoraIngreso(LocalTime.now());
+        reparacion.setVehiculos(new ArrayList<>());
+        reparacion.setTipoReparacion(1);
+        reparacion.setMontoReparacion(120000);
+        reparacion.setFechaSalidaReparacion(LocalDate.now());
+        reparacion.setHoraSalidaReparacion(LocalTime.now());
+        reparacion.setFechaSalidaVehiculo(LocalDate.now());
+        reparacion.setHoraSalidaVehiculo(LocalTime.now());
+
+        Mockito.when(repairRepository.findRepairByPatente(patente)).thenReturn(reparacion);
+
+        RepairEntity result = repairService.findRepairByPatente(patente);
+
+        assertEquals(reparacion, result);
+    }
+    @Test
     public void testListaReparacionesPorPatente() {
         VehicleEntity vehicle = new VehicleEntity();
         vehicle.setPatente("ABCD23");
