@@ -49,7 +49,7 @@ public class RepairController {
 
     @PostMapping("reparaciones/crear?patente={patente}")
     public ResponseEntity<RepairEntity> crearReparacion(@RequestParam String patente, @RequestBody RepairEntity reparacion) {
-        RepairEntity nuevaReparacion = repairService.crearReparacion(patente, reparacion);
+        RepairEntity nuevaReparacion = repairService.crearReparacion(reparacion);
         if (nuevaReparacion != null) {
             return new ResponseEntity<>(nuevaReparacion, HttpStatus.CREATED);
         } else {

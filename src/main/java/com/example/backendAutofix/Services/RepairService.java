@@ -197,8 +197,10 @@ public class RepairService {
         return costoReparacion;
     }
 
-    public RepairEntity crearReparacion(String patente, RepairEntity reparacion){
-
+    public RepairEntity crearReparacion(RepairEntity reparacion){
+        return repairRepository.save(reparacion);
+    }
+    public void vincularReparacionAVehiculo(String patente, RepairEntity reparacion) {
         VehicleEntity vehiculo = vehicleRepository.findByPatenteQuery(patente);
         if(vehiculo != null){
             int costoReparacion = calcularCostoReparacion(vehiculo,reparacion);
@@ -206,17 +208,17 @@ public class RepairService {
             vehiculo.getReparaciones().add(reparacion);
             reparacion.setMontoReparacion(costoReparacion);
             vehiculo.setCantidadReparaciones(vehiculo.getCantidadReparaciones()+1);
-            return repairRepository.save(reparacion);
         }
-        return null;
     }
 
     public List<RepairEntity> listaReparacionesPorPatente(String patente) {
+
         List<RepairEntity> reparacionesPorVehiculo = new ArrayList<>();
 
         List<RepairEntity> todasLasReparaciones = listaReparaciones();
 
         for (RepairEntity reparacion : todasLasReparaciones) {
+            vincularReparacionAVehiculo(patente,reparacion);
             for (VehicleEntity vehiculo : reparacion.getVehiculos()) {
                 if (vehiculo.getPatente().equals(patente)) {
                     reparacionesPorVehiculo.add(reparacion);
@@ -293,21 +295,23 @@ public class RepairService {
 
     }
 
-    public double calcularDescuentoPorDia(String patente){
-
+    public double calcularDescuentoPorDia(String patente) {
         List<RepairEntity> listaReparaciones = listaReparacionesPorPatente(patente);
 
-
         double descuentoDia = 0.0;
-        LocalDate diaIngreso = listaReparaciones.get(0).getFechaIngreso();
-        LocalTime horaIngreso = listaReparaciones.get(0).getHoraIngreso();
-        if ((diaIngreso.getDayOfWeek() == DayOfWeek.MONDAY) || (diaIngreso.getDayOfWeek() == DayOfWeek.THURSDAY)) {
-            if (horaIngreso.isAfter(LocalTime.of(9, 0)) && horaIngreso.isBefore(LocalTime.of(12, 0))) {
+
+        if (!listaReparaciones.isEmpty()) {
+            RepairEntity primeraReparacion = listaReparaciones.get(0);
+            LocalDate diaIngreso = primeraReparacion.getFechaIngreso();
+            LocalTime horaIngreso = primeraReparacion.getHoraIngreso();
+
+            if ((diaIngreso.getDayOfWeek() == DayOfWeek.MONDAY || diaIngreso.getDayOfWeek() == DayOfWeek.THURSDAY) &&
+                    horaIngreso.isAfter(LocalTime.of(9, 0)) && horaIngreso.isBefore(LocalTime.of(12, 0))) {
                 descuentoDia = 0.1;
             }
         }
-        return descuentoDia;
 
+        return descuentoDia;
     }
 
     public double calcularDescuentoBono(VehicleEntity vehiculo){
@@ -400,21 +404,28 @@ public class RepairService {
         return recargoAntiguedad;
     }
 
-    public double calculoRecargoDia(String patente){
+    public double calculoRecargoDia(String patente) {
+        RepairEntity reparacion= new RepairEntity();
         List<RepairEntity> listaReparaciones = listaReparacionesPorPatente(patente);
         double recargoDia = 0.0;
 
-        //Se requiere buscar la ultima posicion de las reparaciones
-        LocalDate salidaReparacion = listaReparaciones.get(listaReparaciones.size()-1).getFechaSalidaReparacion();
-        LocalDate salidaCliente = listaReparaciones.get(listaReparaciones.size()-1).getFechaSalidaVehiculo();
+        if (listaReparaciones != null && !listaReparaciones.isEmpty()) {
+            RepairEntity ultimaReparacion = listaReparaciones.get(listaReparaciones.size() - 1);
+            LocalDate salidaReparacion = ultimaReparacion.getFechaSalidaReparacion();
+            LocalDate salidaCliente = ultimaReparacion.getFechaSalidaVehiculo();
 
-        long cantDias = ChronoUnit.DAYS.between(salidaReparacion,salidaCliente);
+            long cantDias = ChronoUnit.DAYS.between(salidaCliente, salidaReparacion);
 
-        if(salidaReparacion == salidaCliente){
+            if (cantDias > 0) {
+                recargoDia = cantDias * 0.05;
+            }
+        } else {
+            System.out.println("La lista de reparaciones está vacía para la patente proporcionada.");
+            // Puedes manejar este caso lanzando una excepción, devolviendo un valor por defecto o notificando de otra manera
+            // Aquí se utiliza un valor por defecto de recargo
             recargoDia = 0.0;
-        }else{
-            recargoDia = cantDias*0.05;
         }
+
         return recargoDia;
     }
     public double calculoDescuentoTotal(String patente){

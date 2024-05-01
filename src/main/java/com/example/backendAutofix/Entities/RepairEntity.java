@@ -40,6 +40,6 @@ public class RepairEntity {
     private LocalTime horaSalidaReparacion;
 
     private LocalDate fechaSalidaVehiculo;
-    private LocalDate horaSalidaVehiculo;
+    private LocalTime horaSalidaVehiculo;
 
 }

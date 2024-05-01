@@ -62,7 +62,7 @@ public class VehicleTest {
     @Test
     public void registroVehiculo(){
         VehicleEntity vehicle1 = new VehicleEntity();
-        vehicle1.setPatente("ABCD23");
+        vehicle1.setPatente("ABGH23");
         vehicle1.setMarca("Honda");
         vehicle1.setTipoModelo("Sedan");
         vehicle1.setAno(2010);
@@ -129,7 +129,7 @@ public class VehicleTest {
     @Test
     public void EliminarVehiculo() {
         // Arrange
-        String patente = "ABCD123";
+        String patente = "ABCF123";
         when(vehicleRepository.existsByPatenteQuery(patente)).thenReturn(true);
 
         // Act
