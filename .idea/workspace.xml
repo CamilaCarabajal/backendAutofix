@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ee6246ae-3c04-4791-9d07-8cd84e48bd78" name="Changes" comment="" />
+    <list default="true" id="ee6246ae-3c04-4791-9d07-8cd84e48bd78" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,7 +26,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -48,56 +52,56 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Unnamed.executor": "Run",
-    "Downloaded.Files.Path.Enabled": "false",
-    "JUnit.AverageTest.executor": "Coverage",
-    "JUnit.BackendAutofixApplicationTests.executor": "Coverage",
-    "JUnit.RepairTest.executor": "Debug",
-    "JUnit.VehicleTest.executor": "Coverage",
-    "JUnit.VehicleTest.registroVehiculo.executor": "Run",
-    "JUnit.backendAutofix in backendAutofix.executor": "Coverage",
-    "Maven.backendAutofix [--version].executor": "Run",
-    "Maven.backendAutofix [clean,test,jacoco:report].executor": "Run",
-    "Maven.backendAutofix [clean].executor": "Run",
-    "Maven.backendAutofix [compile].executor": "Run",
-    "Maven.backendAutofix [install:install].executor": "Run",
-    "Maven.backendAutofix [install].executor": "Run",
-    "Maven.backendAutofix [package].executor": "Run",
-    "Maven.backendAutofix [test].executor": "Run",
-    "Maven.backendAutofix [validate].executor": "Run",
-    "Maven.backendAutofix [verify].executor": "Run",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "true",
-    "Repository.Attach.Sources": "true",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.BackendAutofixApplication.executor": "Run",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/mykam/IdeaProjects/backendAutofix",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;JUnit.AverageTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.BackendAutofixApplicationTests.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.RepairTest.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.VehicleTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.VehicleTest.registroVehiculo.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.backendAutofix in backendAutofix.executor&quot;: &quot;Coverage&quot;,
+    &quot;Maven.backendAutofix [--version].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.backendAutofix [clean,test,jacoco:report].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.backendAutofix [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.backendAutofix [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.backendAutofix [install:install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.backendAutofix [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.backendAutofix [package].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.backendAutofix [test].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.backendAutofix [validate].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.backendAutofix [verify].executor&quot;: &quot;Run&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;true&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.BackendAutofixApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/mykam/IdeaProjects/backendAutofix&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="mvn install:install" />
@@ -237,6 +241,7 @@
       <workItem from="1714623776658" duration="2417000" />
       <workItem from="1714628071193" duration="7248000" />
       <workItem from="1714654088045" duration="24000" />
+      <workItem from="1714655295914" duration="327000" />
     </task>
     <servers />
   </component>
