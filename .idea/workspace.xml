@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ee6246ae-3c04-4791-9d07-8cd84e48bd78" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/frontendAutofix/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontendAutofix/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Jenkinsfile.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +81,7 @@
     "Spring Boot.BackendAutofixApplication.executor": "Run",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/mykam/IdeaProjects/backendAutofix/backAutofix",
+    "last_opened_file_path": "C:/Users/mykam/IdeaProjects",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -218,6 +218,7 @@
       <workItem from="1714503597002" duration="5045000" />
       <workItem from="1714508689814" duration="20845000" />
       <workItem from="1714539739390" duration="7853000" />
+      <workItem from="1714654113964" duration="39000" />
     </task>
     <servers />
   </component>
