@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ee6246ae-3c04-4791-9d07-8cd84e48bd78" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Jenkinsfile.txt" beforeDir="false" />
-    </list>
+    <list default="true" id="ee6246ae-3c04-4791-9d07-8cd84e48bd78" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,7 +22,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -65,6 +63,7 @@
     "Maven.backendAutofix [clean].executor": "Run",
     "Maven.backendAutofix [compile].executor": "Run",
     "Maven.backendAutofix [install:install].executor": "Run",
+    "Maven.backendAutofix [install].executor": "Run",
     "Maven.backendAutofix [package].executor": "Run",
     "Maven.backendAutofix [test].executor": "Run",
     "Maven.backendAutofix [validate].executor": "Run",
@@ -81,7 +80,7 @@
     "Spring Boot.BackendAutofixApplication.executor": "Run",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/mykam/IdeaProjects",
+    "last_opened_file_path": "C:/Users/mykam/IdeaProjects/backendAutofix",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -90,7 +89,7 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.archetype.catalogs",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -177,12 +176,25 @@
       </method>
     </configuration>
     <configuration name="BackendAutofixApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <envs>
+        <env name="DB_HOST" value="192.168.1.9" />
+        <env name="DB_USERNAME" value="postgres" />
+        <env name="DB_PASSWORD" value="1234" />
+      </envs>
       <module name="backendAutofix" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.backendAutofix.BackendAutofixApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="JUnit.AverageTest" />
+      <item itemvalue="JUnit.backendAutofix in backendAutofix" />
+      <item itemvalue="JUnit.BackendAutofixApplicationTests" />
+      <item itemvalue="JUnit.RepairTest" />
+      <item itemvalue="JUnit.VehicleTest" />
+      <item itemvalue="Spring Boot.BackendAutofixApplication" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.backendAutofix in backendAutofix" />
@@ -217,8 +229,14 @@
       <workItem from="1714490236423" duration="8412000" />
       <workItem from="1714503597002" duration="5045000" />
       <workItem from="1714508689814" duration="20845000" />
-      <workItem from="1714539739390" duration="7853000" />
-      <workItem from="1714654113964" duration="39000" />
+      <workItem from="1714539739390" duration="7196000" />
+      <workItem from="1714602718615" duration="648000" />
+      <workItem from="1714606031417" duration="3854000" />
+      <workItem from="1714619965199" duration="411000" />
+      <workItem from="1714620464123" duration="399000" />
+      <workItem from="1714623776658" duration="2417000" />
+      <workItem from="1714628071193" duration="7248000" />
+      <workItem from="1714654088045" duration="24000" />
     </task>
     <servers />
   </component>
@@ -229,6 +247,7 @@
     <SUITE FILE_PATH="coverage/backendAutofix$RepairTest.ic" NAME="RepairTest Coverage Results" MODIFIED="1714534978434" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.example.backendAutofix.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/backAutofix$backendAutofix_in_backendAutofix.ic" NAME="backendAutofix in backendAutofix Coverage Results" MODIFIED="1714607903955" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/backendAutofix$AverageTest.ic" NAME="AverageTest Coverage Results" MODIFIED="1714542130046" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.example.backendAutofix.*</FILTER>
     </SUITE>
