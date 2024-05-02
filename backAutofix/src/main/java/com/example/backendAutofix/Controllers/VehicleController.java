@@ -7,10 +7,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import com.example.backendAutofix.Entities.VehicleEntity;
 
+import java.util.List;
+
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/api")
+@RequestMapping("/api/v1/vehiculos")
 public class VehicleController {
 
     @Autowired
@@ -18,13 +20,13 @@ public class VehicleController {
 
 
 
-    @PostMapping("/vehiculos")
+    @PostMapping("/crear")
     public ResponseEntity<VehicleEntity> registroVehiculo(@RequestBody VehicleEntity vehiculo) {
         VehicleEntity nuevoVehiculo = vehicleService.registroVehiculo(vehiculo);
         return ResponseEntity.ok(nuevoVehiculo);
     }
 
-    @GetMapping("/vehiculos/{patente}")
+    @GetMapping("/{patente}")
     public ResponseEntity<VehicleEntity> obtenerVehiculoPatente(@PathVariable String patente) {
         VehicleEntity vehiculo = vehicleService.obtenerVehiculoPatente(patente);
         if (vehiculo != null) {
@@ -35,7 +37,7 @@ public class VehicleController {
     }
 
 
-    @PutMapping("/vehiculos/{patente}")
+    @PutMapping("/{patente}")
     public ResponseEntity<VehicleEntity> modificarVehiculo(@PathVariable String patente, @RequestBody VehicleEntity vehiculo) {
         VehicleEntity vehiculoActualizado = vehicleService.modificarVehiculo(patente, vehiculo);
         if (vehiculoActualizado != null) {
@@ -45,7 +47,7 @@ public class VehicleController {
         }
     }
 
-    @DeleteMapping("/vehiculos/{patente}")
+    @DeleteMapping("/{patente}")
     public ResponseEntity<String> eliminarVehiculo(@PathVariable String patente) {
         boolean eliminado = vehicleService.eliminarVehiculo(patente);
         if (eliminado) {
@@ -53,6 +55,11 @@ public class VehicleController {
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @GetMapping("/lista")
+    public List<VehicleEntity> getListaVehiculos() {
+        return vehicleService.listaVehiculos();
     }
 
 

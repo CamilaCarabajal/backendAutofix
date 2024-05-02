@@ -20,7 +20,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/api")
+@RequestMapping("/api/v1/reparaciones")
 
 public class RepairController {
 
@@ -31,12 +31,12 @@ public class RepairController {
 
 
 
-    @GetMapping("/reparaciones")
+    @GetMapping("/")
     public List<RepairEntity> listaReparaciones(){
         return repairService.listaReparaciones();
     }
 
-    @GetMapping("reparaciones/{idReparacion}")
+    @GetMapping("/{idReparacion}")
     public ResponseEntity<RepairEntity> obtenerReparacionPorId(@PathVariable Long idReparacion) {
         RepairEntity reparacion = repairService.obtenerReparacionPorId(idReparacion);
         if (reparacion == null) {
@@ -47,7 +47,7 @@ public class RepairController {
 
 
 
-    @PostMapping("reparaciones/crear")
+    @PostMapping("/crear")
     public ResponseEntity<RepairEntity> crearReparacion(@RequestBody RepairEntity reparacion) {
         RepairEntity nuevaReparacion = repairService.crearReparacion(reparacion);
         if (nuevaReparacion != null) {
@@ -57,7 +57,7 @@ public class RepairController {
         }
     }
 
-    @PutMapping("reparaciones/actualizar/{idReparacion}")
+    @PutMapping("/actualizar/{idReparacion}")
     public ResponseEntity<RepairEntity> actualizarReparacion(@PathVariable Long idReparacion, @RequestBody RepairEntity reparacion) {
         RepairEntity reparacionActualizada = repairService.actualizarReparacion(idReparacion, reparacion);
         if (reparacionActualizada != null) {
@@ -67,7 +67,7 @@ public class RepairController {
         }
     }
 
-    @DeleteMapping("reparaciones/eliminar/{id}")
+    @DeleteMapping("/eliminar/{id}")
     public ResponseEntity<Void> eliminarReparacion(@PathVariable Long idReparacion) {
         repairService.eliminarReparacion(idReparacion);
         return ResponseEntity.noContent().build();
@@ -84,7 +84,7 @@ public class RepairController {
         }
     }
 
-    @GetMapping("reparaciones/costoTotal/{patente}")
+    @GetMapping("/costoTotal/{patente}")
     public ResponseEntity<Double> obtenerCostoTotalVehiculo(@PathVariable String patente) {
         double costoTotalVehiculo = repairService.obtenerCostoTotalVehiculo(patente);
 

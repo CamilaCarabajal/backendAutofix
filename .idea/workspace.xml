@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ee6246ae-3c04-4791-9d07-8cd84e48bd78" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/frontendAutofix/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontendAutofix/package.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageOptionsProvider">
+    <option name="myAddOrReplace" value="0" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2ebHgzzT02cUfyiSdGuo1aAnknc" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Unnamed.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "false",
+    "JUnit.AverageTest.executor": "Coverage",
+    "JUnit.BackendAutofixApplicationTests.executor": "Coverage",
+    "JUnit.RepairTest.executor": "Debug",
+    "JUnit.VehicleTest.executor": "Coverage",
+    "JUnit.VehicleTest.registroVehiculo.executor": "Run",
+    "JUnit.backendAutofix in backendAutofix.executor": "Coverage",
+    "Maven.backendAutofix [--version].executor": "Run",
+    "Maven.backendAutofix [clean,test,jacoco:report].executor": "Run",
+    "Maven.backendAutofix [clean].executor": "Run",
+    "Maven.backendAutofix [compile].executor": "Run",
+    "Maven.backendAutofix [install:install].executor": "Run",
+    "Maven.backendAutofix [package].executor": "Run",
+    "Maven.backendAutofix [test].executor": "Run",
+    "Maven.backendAutofix [validate].executor": "Run",
+    "Maven.backendAutofix [verify].executor": "Run",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "true",
+    "Repository.Attach.Sources": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.BackendAutofixApplication.executor": "Run",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/mykam/IdeaProjects/backendAutofix/backAutofix",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.archetype.catalogs",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ]
+  }
+}]]></component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn install:install" />
+      <command value="mvn --version" />
+      <command value="mvn clean test jacoco:report" />
+      <command value="mvn test" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.BackendAutofixApplication">
+    <configuration name="AverageTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="backendAutofix" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.backendAutofix.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.backendAutofix" />
+      <option name="MAIN_CLASS_NAME" value="com.example.backendAutofix.AverageTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BackendAutofixApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="backendAutofix" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.backendAutofix.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.backendAutofix" />
+      <option name="MAIN_CLASS_NAME" value="com.example.backendAutofix.BackendAutofixApplicationTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RepairTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="backendAutofix" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.backendAutofix.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.backendAutofix" />
+      <option name="MAIN_CLASS_NAME" value="com.example.backendAutofix.RepairTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="VehicleTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="backendAutofix" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.backendAutofix.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.backendAutofix" />
+      <option name="MAIN_CLASS_NAME" value="com.example.backendAutofix.VehicleTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="backendAutofix in backendAutofix" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="backendAutofix" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/src/test/java/com/example/backendAutofix" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BackendAutofixApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="backendAutofix" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.backendAutofix.BackendAutofixApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.backendAutofix in backendAutofix" />
+        <item itemvalue="JUnit.BackendAutofixApplicationTests" />
+        <item itemvalue="JUnit.AverageTest" />
+        <item itemvalue="JUnit.RepairTest" />
+        <item itemvalue="JUnit.VehicleTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-22-openjdk-22-4caba194b151-f504ca98" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ee6246ae-3c04-4791-9d07-8cd84e48bd78" name="Changes" comment="" />
+      <created>1712166472861</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1712166472861</updated>
+      <workItem from="1712166473887" duration="1058000" />
+      <workItem from="1712167550686" duration="23962000" />
+      <workItem from="1712671725881" duration="5125000" />
+      <workItem from="1713921082035" duration="10761000" />
+      <workItem from="1714080935845" duration="75523000" />
+      <workItem from="1714486363028" duration="805000" />
+      <workItem from="1714490236423" duration="8412000" />
+      <workItem from="1714503597002" duration="5045000" />
+      <workItem from="1714508689814" duration="20845000" />
+      <workItem from="1714539739390" duration="7853000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/backendAutofix$RepairTest.ic" NAME="RepairTest Coverage Results" MODIFIED="1714534978434" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.backendAutofix.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/backendAutofix$AverageTest.ic" NAME="AverageTest Coverage Results" MODIFIED="1714542130046" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.backendAutofix.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/backendAutofix$VehicleTest.ic" NAME="VehicleTest Coverage Results" MODIFIED="1714523942244" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.backendAutofix.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/backendAutofix$BackendAutofixApplicationTests.ic" NAME="BackendAutofixApplicationTests Coverage Results" MODIFIED="1714542163409" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.backendAutofix.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/backendAutofix$backendAutofix_in_backendAutofix.ic" NAME="backendAutofix in backendAutofix Coverage Results" MODIFIED="1714543902115" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+</project>
